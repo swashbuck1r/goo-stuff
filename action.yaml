@@ -1,0 +1,11 @@
+apiVersion: actions.cloudbees.io/v1alpha1
+kind: action
+name: hello-action
+runs:
+  using: composite
+  steps:
+    - id: action-step
+      uses: docker://alpine:3.17
+      shell: sh
+      run: |
+        echo "Hello from action."
