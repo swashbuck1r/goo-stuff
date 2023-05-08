@@ -9,11 +9,11 @@ inputs:
 outputs:
   result:
     description: "Generated message"
-    value: ${{steps.parameterized-action-step.outputs.random-number}}
+    value: ${{steps.parameterized_action_step.outputs.result}}
 runs:
   using: composite
   steps:
-    - id: parameterized-action-step
+    - id: parameterized_action_step
       uses: docker://alpine:3.17
       shell: sh
       run: |
