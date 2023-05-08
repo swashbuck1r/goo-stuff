@@ -1,0 +1,15 @@
+apiVersion: actions.cloudbees.io/v1alpha1
+kind: action
+name: parameterized-action
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+runs:
+  using: composite
+  steps:
+    - id: parameterized-action-step
+      uses: docker://alpine:3.17
+      shell: sh
+      run: echo Hello ${{ inputs.who-to-greet }}.
