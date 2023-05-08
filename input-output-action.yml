@@ -1,0 +1,23 @@
+apiVersion: actions.cloudbees.io/v1alpha1
+kind: action
+name: input-output-action
+inputs:
+  name:
+    description: 'Message to print'
+    required: true
+    default: 'World'
+outputs:
+  result:
+    description: "Generated message"
+    value: ${{steps.parameterized-action-step.outputs.random-number}}
+runs:
+  using: composite
+  steps:
+    - id: parameterized-action-step
+      uses: docker://alpine:3.17
+      shell: sh
+      run: |
+        MSG="Hello ${{inputs.name}}!!"
+        echo "storing generated message in $CLOUDBEES_OUTPUTS/result"
+        echo "$MSG" > $CLOUDBEES_OUTPUTS/result
+
