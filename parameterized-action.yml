@@ -2,8 +2,8 @@ apiVersion: actions.cloudbees.io/v1alpha1
 kind: action
 name: parameterized-action
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  message:  # id of input
+    description: 'Message to print'
     required: true
     default: 'World'
 runs:
@@ -12,4 +12,4 @@ runs:
     - id: parameterized-action-step
       uses: docker://alpine:3.17
       shell: sh
-      run: echo Hello ${{ inputs.who-to-greet }}.
+      run: echo "Say ${{inputs.message}}".
