@@ -8,4 +8,4 @@ runs:
       uses: docker://alpine:3.17
       shell: sh
       run: |
-        echo "Hello from action2."
+        echo "Hello from action3."
